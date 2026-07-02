@@ -1,0 +1,14 @@
+/* FormField inherits .form-section, .grid, .full-width from UserForm.css
+   (both are imported in the same page, so we only add overrides here) */
+
+.form-section-heading {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 20px 0;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

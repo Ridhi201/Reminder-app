@@ -1,0 +1,58 @@
+.topbar {
+  height: 70px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.iconButton {
+  border: none;
+  background: #F8FAFC;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .3s;
+}
+
+.iconButton:hover {
+  background: #E2E8F0;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding-left: 15px;
+  border-left: 1px solid #E5E7EB;
+}
+
+.profile img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+}
+
+.profile h4 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.profile p {
+  margin: 0;
+  font-size: 13px;
+  color: #64748B;
+}

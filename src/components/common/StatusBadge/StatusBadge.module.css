@@ -1,0 +1,77 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* User */
+
+.active {
+  background: #DCFCE7;
+  color: #15803D;
+}
+
+.inactive {
+  background: #F3F4F6;
+  color: #6B7280;
+}
+
+.blocked {
+  background: #FEE2E2;
+  color: #DC2626;
+}
+
+/* Reminder */
+
+.pending {
+  background: #FEF3C7;
+  color: #D97706;
+}
+
+.completed {
+  background: #DCFCE7;
+  color: #15803D;
+}
+
+.overdue {
+  background: #FECACA;
+  color: #B91C1C;
+}
+
+/* Payment */
+
+.paid {
+  background: #DCFCE7;
+  color: #15803D;
+}
+
+.failed {
+  background: #FEE2E2;
+  color: #DC2626;
+}
+
+.refunded {
+  background: #DBEAFE;
+  color: #2563EB;
+}
+
+/* Subscription */
+
+.premium {
+  background: #FEF3C7;
+  color: #B45309;
+}
+
+.free {
+  background: #E5E7EB;
+  color: #4B5563;
+}
+
+.expired {
+  background: #FECACA;
+  color: #B91C1C;
+}

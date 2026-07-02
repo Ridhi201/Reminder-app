@@ -1,0 +1,29 @@
+.delete-modal {
+  padding: 35px;
+  text-align: center;
+}
+
+.delete-icon {
+  font-size: 65px;
+  margin-bottom: 20px;
+}
+
+.delete-modal h2 {
+  margin-bottom: 15px;
+  color: #1e293b;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.delete-modal p {
+  margin-bottom: 30px;
+  color: #64748B;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.delete-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}

@@ -1,0 +1,94 @@
+.table-card {
+  background: white;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, .05);
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  padding: 18px;
+  font-size: 15px;
+  background: #F8FAFC;
+  color: #475569;
+}
+
+td {
+  padding: 18px;
+  border-top: 1px solid #E2E8F0;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #2563EB;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.role {
+  background: #EFF6FF;
+  color: #2563EB;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.active {
+  background: #DCFCE7;
+  color: #16A34A;
+}
+
+.pending {
+  background: #FEF3C7;
+  color: #D97706;
+}
+
+.blocked {
+  background: #FEE2E2;
+  color: #DC2626;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.actions button {
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 10px;
+  background: #F8FAFC;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.actions button:hover {
+  background: #2563EB;
+  color: white;
+}

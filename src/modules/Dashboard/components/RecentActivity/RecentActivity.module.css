@@ -1,0 +1,27 @@
+.container {
+  background: white;
+  border-radius: 18px;
+  padding: 25px;
+  margin-top: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .05);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.header button {
+  border: none;
+  background: none;
+  color: #2563EB;
+  cursor: pointer;
+  font-weight: 600;
+}

@@ -1,0 +1,46 @@
+.calendar-page {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.calendar-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Toolbar */
+.fc-toolbar-title {
+  font-size: 24px !important;
+  font-weight: 700;
+}
+
+.fc-button {
+  background: #2563EB !important;
+  border: none !important;
+  padding: 8px 14px !important;
+}
+
+.fc-button:hover {
+  background: #1D4ED8 !important;
+}
+
+.fc-button-active {
+  background: #1E40AF !important;
+}
+
+/* Event */
+.fc-event {
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 2px 4px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Today */
+.fc-day-today {
+  background: #EFF6FF !important;
+}

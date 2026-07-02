@@ -1,0 +1,10 @@
+.heading {
+  margin: 35px 0 20px;
+  color: #111827;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}

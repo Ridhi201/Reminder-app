@@ -1,0 +1,23 @@
+.sidebar {
+  width: 270px;
+  height: 100vh;
+  background: #0F172A;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  padding: 15px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+.menu {
+  flex: 1;
+  overflow: auto;
+}

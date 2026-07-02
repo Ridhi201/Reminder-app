@@ -1,0 +1,250 @@
+/* ═══════════════════════════════════════════════════════════
+   Form Design System — shared CSS for all Form/* components
+   Imported individually by each component in this folder.
+═══════════════════════════════════════════════════════════ */
+
+/* ── Section card ── */
+.form-section-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 28px 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f5f9;
+}
+
+.form-section-heading {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 20px 0;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* ── Row grid ── */
+.form-row {
+  display: grid;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.form-row:last-child { margin-bottom: 0; }
+
+.form-row.cols-1 { grid-template-columns: 1fr; }
+.form-row.cols-2 { grid-template-columns: 1fr 1fr; }
+.form-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+/* ── Shared label ── */
+.form-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.form-required {
+  color: #ef4444;
+  margin-left: 3px;
+}
+
+/* ── Shared error ── */
+.form-error-text {
+  font-size: 12px;
+  color: #dc2626;
+  margin-top: 5px;
+}
+
+/* ── Select ── */
+.form-select-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-select-wrapper {
+  position: relative;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  background: #ffffff;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-select-wrapper:focus-within {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.form-select-wrapper.form-select-error {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+}
+
+.form-select-el {
+  width: 100%;
+  padding: 14px;
+  padding-right: 40px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 15px;
+  color: #1e293b;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+.form-select-el:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* ── Textarea ── */
+.form-textarea-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-textarea-el {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 15px;
+  color: #1e293b;
+  background: #ffffff;
+  outline: none;
+  resize: vertical;
+  min-height: 90px;
+  line-height: 1.5;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.form-textarea-el::placeholder { color: #9ca3af; }
+
+.form-textarea-el:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.form-textarea-el.form-textarea-error {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+}
+
+.form-textarea-el:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* ── File upload ── */
+.file-upload-card {
+  border: 2px dashed #e2e8f0;
+  border-radius: 14px;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  background: #f8fafc;
+}
+
+.file-upload-card:hover {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.file-upload-icon {
+  font-size: 32px;
+  color: #94a3b8;
+}
+
+.file-upload-card:hover .file-upload-icon { color: #2563eb; }
+
+.file-upload-text {
+  text-align: center;
+}
+
+.file-upload-text p {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 4px 0;
+}
+
+.file-upload-text span {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.file-upload-preview {
+  width: 100%;
+  max-height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-top: 8px;
+}
+
+/* ── Form Actions ── */
+.form-actions-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 14px;
+}
+
+.form-btn-cancel {
+  padding: 12px 28px;
+  background: #f8fafc;
+  color: #475569;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.form-btn-cancel:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+.form-btn-save {
+  padding: 12px 32px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+  transition: all 0.2s;
+}
+
+.form-btn-save:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+}
+
+.form-btn-save:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .form-row.cols-2,
+  .form-row.cols-3 { grid-template-columns: 1fr; }
+  .form-section-card { padding: 20px; }
+  .form-actions-bar { flex-direction: column-reverse; align-items: stretch; }
+  .form-btn-cancel,
+  .form-btn-save { justify-content: center; }
+}

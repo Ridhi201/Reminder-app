@@ -1,0 +1,34 @@
+.module-overview__subtitle {
+  font-size: 0.85rem;
+}
+
+.module-overview__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.module-overview__link {
+  color: inherit;
+}
+
+.module-overview__card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: border-color 0.15s ease, transform 0.1s ease;
+}
+
+.module-overview__card:hover {
+  border-color: var(--cobalt);
+  transform: translateY(-1px);
+}
+
+.module-overview__card-title {
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.module-overview__card-arrow {
+  color: var(--ink-faint);
+}

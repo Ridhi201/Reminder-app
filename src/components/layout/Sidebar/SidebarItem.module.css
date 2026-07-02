@@ -1,0 +1,21 @@
+.item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: .3s;
+  margin-bottom: 6px;
+  color: #CBD5E1;
+}
+
+.item:hover {
+  background: #1E293B;
+  color: white;
+}
+
+.active {
+  background: #2563EB;
+  color: white;
+}

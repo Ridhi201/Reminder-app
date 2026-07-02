@@ -1,0 +1,33 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.subtitle {
+  margin-top: -10px;
+  margin-bottom: 15px;
+}
+
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forgot-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #2563EB;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.forgot-btn:hover {
+  text-decoration: underline;
+}
+
+.version {
+  margin-top: 15px;
+}

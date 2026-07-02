@@ -1,0 +1,54 @@
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.input-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.input-label span {
+  color: red;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: .3s;
+  background: white;
+}
+
+.input-wrapper:focus-within {
+  border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
+}
+
+.input-icon {
+  padding: 0 12px;
+  color: #6b7280;
+}
+
+.input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 14px;
+  font-size: 15px;
+  background: transparent;
+}
+
+.input-error {
+  border-color: red;
+}
+
+.error-text {
+  font-size: 13px;
+  color: red;
+}

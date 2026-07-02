@@ -1,0 +1,92 @@
+.typography {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Variants */
+
+.h1 {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.h2 {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.h3 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.h4 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.body {
+  font-size: 16px;
+}
+
+.small {
+  font-size: 14px;
+}
+
+.caption {
+  font-size: 12px;
+}
+
+/* Weight */
+
+.regular {
+  font-weight: 400;
+}
+
+.medium {
+  font-weight: 500;
+}
+
+.semibold {
+  font-weight: 600;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+/* Color */
+
+.primary {
+  color: #111827;
+}
+
+.secondary {
+  color: #6B7280;
+}
+
+.white {
+  color: #ffffff;
+}
+
+.success {
+  color: #22C55E;
+}
+
+.danger {
+  color: #EF4444;
+}
+
+/* Alignment */
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
