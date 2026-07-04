@@ -12,7 +12,7 @@ export default function TemplateStats({ stats }) {
   return (
     <div className="stats-grid">
       {statsData.map((item, index) => (
-        <Card key={index}>
+        <Card key={index} className="card-blue">
           <div className="stat-card-content">
             <h4>{item.title}</h4>
             <h2>{item.value}</h2>

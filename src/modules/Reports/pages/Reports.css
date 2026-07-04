@@ -1,0 +1,164 @@
+.reports-screen {
+  padding: 28px 32px;
+  max-width: 1180px;
+}
+
+.reports-header { margin-bottom: 4px; }
+
+.reports-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 4px;
+  font-family: var(--font-display);
+}
+
+.reports-subtitle {
+  font-size: 14px;
+  color: var(--ink-muted);
+  margin: 0;
+}
+
+/* Tab bar */
+.reports-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.reports-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--border);
+  background: var(--surface);
+  color: var(--ink-muted);
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.reports-tab:hover {
+  border-color: var(--ink-muted);
+  color: var(--ink);
+}
+
+.reports-tab.active {
+  font-weight: 700;
+}
+
+/* Section */
+.report-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Stats grid */
+.report-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.report-stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px 22px;
+  transition: box-shadow 0.2s ease;
+}
+
+.report-stat-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.report-stat-value {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--ink);
+  font-family: var(--font-display);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.report-stat-label {
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin-bottom: 8px;
+}
+
+.report-stat-delta {
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+}
+
+.report-stat-delta.up {
+  background: rgba(47, 158, 104, 0.12);
+  color: var(--green);
+}
+
+.report-stat-delta.down {
+  background: rgba(226, 92, 92, 0.12);
+  color: var(--coral);
+}
+
+/* Filter bar */
+.report-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.report-filter-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-muted);
+  margin-right: 4px;
+}
+
+.report-period-btn {
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--border);
+  background: var(--surface-muted);
+  color: var(--ink-muted);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.report-period-btn:hover {
+  border-color: var(--ink-muted);
+  color: var(--ink);
+}
+
+.report-period-btn.active {
+  color: white;
+  font-weight: 600;
+}
+
+/* Chart cards */
+.report-chart-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+}
+
+.report-chart-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 20px;
+  font-family: var(--font-display);
+}

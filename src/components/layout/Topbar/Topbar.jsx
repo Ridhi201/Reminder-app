@@ -1,43 +1,60 @@
+import { useNavigate } from "react-router-dom";
+import { MdMenu, MdSettings, MdNotifications } from "react-icons/md";
+import { useAuthContext } from "../../../context/AuthContext";
 import styles from "./Topbar.module.css";
-import { MdMenu, MdDarkMode, MdSettings } from "react-icons/md";
 
 export default function Topbar() {
+  const { user } = useAuthContext();
+  const navigate = useNavigate();
+
   return (
     <header className={styles.topbar}>
-
-      <button className={styles.iconButton}>
+      {/* Menu toggle */}
+      <button className={styles.menuButton} aria-label="Toggle sidebar">
         <MdMenu size={24} />
       </button>
 
       <div className={styles.right}>
-
-        <button className={styles.iconButton}>
-          <MdDarkMode size={22} />
+        {/* Notifications bell — amber on hover */}
+        <button
+          className={styles.notifButton}
+          aria-label="Notifications"
+          title="Notifications"
+          onClick={() => navigate("/notifications")}
+        >
+          <MdNotifications size={22} />
         </button>
 
-        <button className={styles.iconButton}>
+        {/* Settings — emerald on hover */}
+        <button
+          className={styles.settingsButton}
+          aria-label="Settings"
+          title="Settings"
+          onClick={() => navigate("/settings")}
+        >
           <MdSettings size={22} />
         </button>
 
-        <div className={styles.profile}>
-
+        {/* Profile chip */}
+        <div
+          className={styles.profile}
+          onClick={() => navigate("/profile")}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => e.key === "Enter" && navigate("/profile")}
+          aria-label="Go to profile"
+          title="My Profile"
+        >
           <img
-            src="https://i.pravatar.cc/150?img=5"
-            alt="profile"
+            src={user?.avatar ?? "https://i.pravatar.cc/150?img=5"}
+            alt={user?.name ?? "Profile"}
           />
-
           <div>
-
-            <h4>Admin</h4>
-
-            <p>Super Admin</p>
-
+            <h4>{user?.name ?? "Admin"}</h4>
+            <p>{user?.email ?? "admin@acme.com"}</p>
           </div>
-
         </div>
-
       </div>
-
     </header>
   );
 }

@@ -21,14 +21,12 @@ export default function Dashboard() {
         title="Dashboard"
         subtitle="Manage reminders and monitor application activity."
         buttonText="Export"
+        buttonVariant="primary"
       />
 
       <Greeting />
 
       <Stats />
-
-      {/* <WeeklyAnalytics /> */}
-      <CategoryChart />
 
       <DashboardGrid
 
@@ -49,6 +47,9 @@ export default function Dashboard() {
         }
 
       />
+
+      {/* Reminder Categories — moved below main grid */}
+      <CategoryChart />
 
     </>
 

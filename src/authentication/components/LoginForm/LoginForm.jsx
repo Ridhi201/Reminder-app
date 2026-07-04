@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../../context/AuthContext";
 
 import Typography from "../../../components/common/Typography";
 import Input from "../../../components/common/Input";
@@ -8,54 +10,103 @@ import Button from "../../../components/common/Button";
 
 import "./LoginForm.css";
 
-export default function LoginForm() {
+// Mock credentials — swap for real API call when backend is ready
+const MOCK_USERS = [
+  {
+    id: 1,
+    name: "Admin",
+    email: "admin@reminder.com",
+    phone: "9999999999",
+    role: "Super Admin",
+    avatar: "https://i.pravatar.cc/150?img=5",
+    password: "admin123",
+  },
+];
 
-  const [remember, setRemember] = useState(false);
+export default function LoginForm() {
+  const { login } = useAuthContext();
+  const navigate = useNavigate();
+
+  const [identifier, setIdentifier] = useState("");
+  const [password, setPassword]   = useState("");
+  const [remember, setRemember]   = useState(false);
+  const [error, setError]         = useState("");
+  const [loading, setLoading]     = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    // Simulate network delay
+    await new Promise((r) => setTimeout(r, 600));
+
+    const found = MOCK_USERS.find(
+      (u) =>
+        (u.email === identifier || u.phone === identifier) &&
+        u.password === password
+    );
+
+    if (found) {
+      const { password: _pw, ...safeUser } = found;
+      login(safeUser, remember);
+      navigate("/dashboard", { replace: true });
+    } else {
+      setError("Invalid email/phone or password. Try admin@reminder.com / admin123");
+    }
+
+    setLoading(false);
+  };
 
   return (
-
-    <div className="login-form">
-
+    <form className="login-form" onSubmit={handleSubmit} noValidate>
       <Typography variant="h2">
         Welcome Back 👋
       </Typography>
 
-      <Typography
-        color="secondary"
-        className="subtitle"
-      >
+      <Typography color="secondary" className="subtitle">
         Sign in to continue to Reminder Admin
       </Typography>
 
+      {error && (
+        <div className="login-error" role="alert">
+          {error}
+        </div>
+      )}
+
       <Input
         label="Email or Phone"
-        placeholder="Enter email or phone number"
+        placeholder="admin@reminder.com"
+        value={identifier}
+        onChange={(e) => setIdentifier(e.target.value)}
         required
+        id="login-identifier"
       />
 
       <PasswordInput
         label="Password"
+        placeholder="Enter your password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
         required
+        id="login-password"
       />
 
       <div className="login-options">
-
         <Checkbox
           label="Remember Me"
           checked={remember}
-          onChange={(e)=>setRemember(e.target.checked)}
+          onChange={(e) => setRemember(e.target.checked)}
+          id="login-remember"
         />
 
-        <button className="forgot-btn">
+        <button type="button" className="forgot-btn">
           Forgot Password?
         </button>
-
       </div>
 
-      <Button
-        fullWidth
-      >
-        Login
+      <Button fullWidth type="submit" disabled={loading}>
+        {loading ? "Signing in…" : "Login"}
       </Button>
 
       <Typography
@@ -66,9 +117,6 @@ export default function LoginForm() {
       >
         Version 1.0.0
       </Typography>
-
-    </div>
-
+    </form>
   );
-
 }

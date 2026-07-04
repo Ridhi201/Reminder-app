@@ -9,22 +9,26 @@ const quickActions = [
   {
     title: "Add User",
     icon: MdPersonAdd,
-    color: "#10B981",
+    bg:     "#1d4ed8",                   // Sapphire Blue
+    shadow: "rgba(29,78,216,0.35)",
   },
   {
     title: "Templates",
     icon: MdDescription,
-    color: "#8B5CF6",
+    bg:     "#7c3aed",                   // Royal Violet
+    shadow: "rgba(124,58,237,0.35)",
   },
   {
     title: "Calendar",
     icon: MdCalendarMonth,
-    color: "#F59E0B",
+    bg:     "#b45309",                   // Champagne Gold
+    shadow: "rgba(180,83,9,0.35)",
   },
   {
     title: "Settings",
     icon: MdSettings,
-    color: "#06B6D4",
+    bg:     "#065f46",                   // Deep Emerald
+    shadow: "rgba(6,95,70,0.35)",
   },
 ];
 

@@ -1,9 +1,33 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Card from "../../../../components/common/Card";
 import Button from "../../../../components/common/Button";
 import StatusBadge from "../../../../components/common/StatusBadge";
+import DeleteModal from "../../../../components/common/DeleteModal";
+import { deleteTemplate } from "../../services/templateService";
 import "./TemplateTable.css";
 
-export default function TemplateTable({ templates, onView, onEdit, onDelete }) {
+export default function TemplateTable({ templates, onView, onEdit, loadTemplates }) {
+  const navigate = useNavigate();
+
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  const [selectedTemplate, setSelectedTemplate] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleDelete = async () => {
+    try {
+      setLoading(true);
+      await deleteTemplate(selectedTemplate.id);
+      setDeleteOpen(false);
+      alert("Template Deleted Successfully");
+      loadTemplates();
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <Card padded={false}>
       <div className="table-responsive">
@@ -31,7 +55,10 @@ export default function TemplateTable({ templates, onView, onEdit, onDelete }) {
                   </td>
                   <td>
                     <div className="table-actions">
-                      <Button size="sm" onClick={() => onView && onView(item.id)}>
+                      <Button
+                        size="sm"
+                        onClick={() => navigate(`/templates/view/${item.id}`)}
+                      >
                         View
                       </Button>
                       <Button
@@ -44,7 +71,10 @@ export default function TemplateTable({ templates, onView, onEdit, onDelete }) {
                       <Button
                         size="sm"
                         variant="danger"
-                        onClick={() => onDelete && onDelete([item.id])}
+                        onClick={() => {
+                          setSelectedTemplate(item);
+                          setDeleteOpen(true);
+                        }}
                       >
                         Delete
                       </Button>
@@ -62,7 +92,15 @@ export default function TemplateTable({ templates, onView, onEdit, onDelete }) {
           </tbody>
         </table>
       </div>
+
+      <DeleteModal
+        open={deleteOpen}
+        title="Delete Template"
+        message={`Are you sure you want to delete "${selectedTemplate?.name}" ?`}
+        loading={loading}
+        onCancel={() => setDeleteOpen(false)}
+        onConfirm={handleDelete}
+      />
     </Card>
   );
 }
-

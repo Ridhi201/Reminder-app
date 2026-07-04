@@ -1,36 +1,17 @@
-/**
- * templateService.js
- *
- * Mock API calls for Axios integration.
- * Swap console.logs or errors with Axios endpoints once backend goes online.
- */
+import api from "../../../services/api";
+
+export const getTemplates = () => api.get("/templates");
+export const getTemplateById = (id) => api.get(`/templates/${id}`);
+export const createTemplate = (data) => api.post("/templates", data);
+export const updateTemplate = (id, data) => api.put(`/templates/${id}`, data);
+export const deleteTemplate = (id) => api.delete(`/templates/${id}`);
 
 const templateService = {
-  /** Fetch all templates */
-  getTemplates: async () => {
-    throw new Error("API not connected yet — using local state");
-  },
-
-  /** Fetch a specific template by ID */
-  getTemplateById: async (id) => {
-    throw new Error("API not connected yet — using local state");
-  },
-
-  /** Create a new template */
-  createTemplate: async (data) => {
-    console.log("[templateService] createTemplate →", data);
-  },
-
-  /** Update an existing template */
-  updateTemplate: async (id, data) => {
-    console.log("[templateService] updateTemplate →", id, data);
-  },
-
-  /** Delete a template */
-  deleteTemplate: async (id) => {
-    console.log("[templateService] deleteTemplate →", id);
-  },
+  getTemplates,
+  getTemplateById,
+  createTemplate,
+  updateTemplate,
+  deleteTemplate
 };
 
 export default templateService;
-export { templateService };

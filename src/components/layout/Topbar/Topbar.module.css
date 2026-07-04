@@ -1,58 +1,89 @@
 .topbar {
-  height: 70px;
-  background: white;
+  height: var(--topbar-height, 64px);
+  background: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 25px;
-  border-bottom: 1px solid #E5E7EB;
+  padding: 0 28px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
 }
 
 .right {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 8px;
 }
 
-.iconButton {
+/* All icon buttons — same single light periwinkle color */
+.menuButton,
+.iconButton,
+.notifButton,
+.settingsButton {
   border: none;
-  background: #F8FAFC;
-  width: 42px;
-  height: 42px;
+  background: #6c8ef5;
+  color: #ffffff;
+  width: 40px;
+  height: 40px;
   border-radius: 10px;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: .3s;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(108,142,245,0.30);
 }
 
-.iconButton:hover {
-  background: #E2E8F0;
+.menuButton:hover,
+.iconButton:hover,
+.notifButton:hover,
+.settingsButton:hover {
+  background: #5272e0;
+  transform: scale(1.07);
+  box-shadow: 0 6px 18px rgba(108,142,245,0.45);
 }
 
+/* Profile chip */
 .profile {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   cursor: pointer;
-  padding-left: 15px;
-  border-left: 1px solid #E5E7EB;
+  padding: 5px 14px 5px 5px;
+  margin-left: 8px;
+  border-left: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 50px;
+  background: rgba(108,142,245,0.08);
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.profile:hover {
+  background: rgba(108,142,245,0.15);
+  transform: scale(1.02);
 }
 
 .profile img {
-  width: 42px;
-  height: 42px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #6c8ef5;
+  box-shadow: 0 0 0 3px rgba(108,142,245,0.18);
 }
 
 .profile h4 {
   margin: 0;
-  font-size: 15px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0f172a;
 }
 
 .profile p {
   margin: 0;
-  font-size: 13px;
-  color: #64748B;
+  font-size: 11px;
+  font-weight: 500;
+  color: #6c8ef5;
 }

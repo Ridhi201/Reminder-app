@@ -69,6 +69,19 @@
   width: 100%;
 }
 
+/* White outline — for use on colored/dark backgrounds */
+.btn-white {
+  background: rgba(255,255,255,0.18);
+  color: #ffffff;
+  border: 2px solid rgba(255,255,255,0.55);
+  backdrop-filter: blur(4px);
+}
+
+.btn-white:hover {
+  background: rgba(255,255,255,0.30);
+  border-color: rgba(255,255,255,0.80);
+}
+
 .btn:disabled {
   opacity: .6;
   cursor: not-allowed;

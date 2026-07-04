@@ -1,0 +1,12 @@
+.send-page {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.page-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 20px;
+}

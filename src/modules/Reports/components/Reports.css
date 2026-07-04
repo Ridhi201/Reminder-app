@@ -1,0 +1,121 @@
+/* ───────────────────────────────────────────
+   Reports Module Styles
+─────────────────────────────────────────── */
+
+/* Wrapper for the entire report section */
+.report-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ── Summary stat cards ─────────────────── */
+.report-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.report-stat-card {
+  background: var(--surface, #1e1e2e);
+  border: 1px solid var(--border, rgba(255, 255, 255, 0.08));
+  border-radius: 14px;
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.report-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.report-stat-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--ink, #e2e8f0);
+  line-height: 1.1;
+}
+
+.report-stat-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted, #94a3b8);
+}
+
+.report-stat-delta {
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-top: 0.15rem;
+}
+
+.report-stat-delta.up {
+  color: #34d399;
+}
+
+.report-stat-delta.down {
+  color: #f87171;
+}
+
+/* ── Period filter bar ──────────────────── */
+.report-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.report-filter-label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink-muted, #94a3b8);
+  margin-right: 0.25rem;
+}
+
+.report-period-btn {
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--border, rgba(255, 255, 255, 0.12));
+  background: transparent;
+  color: var(--ink-muted, #94a3b8);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.15s ease;
+}
+
+.report-period-btn:hover {
+  background: var(--border, rgba(255, 255, 255, 0.08));
+  color: var(--ink, #e2e8f0);
+  transform: translateY(-1px);
+}
+
+.report-period-btn.active {
+  color: #fff;
+  font-weight: 600;
+  border-color: transparent;
+}
+
+/* ── Chart cards ────────────────────────── */
+.report-chart-card {
+  background: var(--surface, #1e1e2e);
+  border: 1px solid var(--border, rgba(255, 255, 255, 0.08));
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  transition: box-shadow 0.2s ease;
+}
+
+.report-chart-card:hover {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
+}
+
+.report-chart-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink, #e2e8f0);
+  margin: 0 0 1.1rem 0;
+}

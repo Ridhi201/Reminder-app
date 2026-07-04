@@ -1,0 +1,35 @@
+.notification-table{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+.notification-table th{
+
+background:#F8FAFC;
+
+padding:15px;
+
+text-align:left;
+
+font-weight:600;
+
+}
+
+.notification-table td{
+
+padding:16px;
+
+border-top:1px solid #E5E7EB;
+
+}
+
+.table-actions{
+
+display:flex;
+
+gap:8px;
+
+}

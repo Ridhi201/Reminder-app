@@ -6,10 +6,11 @@ export default function Stats() {
   return (
     <div className={styles.grid}>
 
-      {dashboardStats.map((stat) => (
+      {dashboardStats.map((stat, i) => (
 
         <StatCard
           key={stat.title}
+          index={i}
           title={stat.title}
           value={stat.value}
           percentage={stat.percentage}

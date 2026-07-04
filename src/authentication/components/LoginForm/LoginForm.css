@@ -28,6 +28,22 @@
   text-decoration: underline;
 }
 
+.login-error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: #b91c1c;
+  font-size: 13.5px;
+  line-height: 1.4;
+}
+
+[data-theme="dark"] .login-error {
+  background: rgba(185, 28, 28, 0.15);
+  border-color: rgba(185, 28, 28, 0.35);
+  color: #fca5a5;
+}
+
 .version {
   margin-top: 15px;
 }
