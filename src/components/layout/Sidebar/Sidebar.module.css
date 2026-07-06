@@ -9,6 +9,77 @@
   flex-shrink: 0;
   border-right: 1px solid rgba(255,255,255,0.05);
   overflow: hidden;
+  position: relative;
+  /* Smooth transition for mobile slide-in */
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Mobile: hidden by default, slide in when open ─── */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    transform: translateX(-100%);
+    height: 100dvh;
+    width: 280px;
+    box-shadow: 4px 0 32px rgba(0,0,0,0.5);
+  }
+
+  .sidebarOpen {
+    transform: translateX(0);
+  }
+
+  .closeBtn {
+    display: flex;
+  }
+}
+
+/* Mobile overlay backdrop */
+.overlay {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 199;
+    backdrop-filter: blur(2px);
+    animation: fadeInOverlay 0.25s ease forwards;
+  }
+}
+
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Close button — only on mobile */
+.closeBtn {
+  display: none;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #94a3b8;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.closeBtn:hover {
+  background: rgba(255,255,255,0.14);
+  color: #e2e8f0;
 }
 
 /* Logo */
@@ -116,6 +187,13 @@
   text-decoration: none;
   transition: background 0.15s ease, color 0.15s ease;
   white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .item {
+    padding: 11px 14px;
+    font-size: 14.5px;
+  }
 }
 
 .item:hover {

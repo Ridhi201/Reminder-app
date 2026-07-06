@@ -80,3 +80,41 @@
 }
 
 .blue, .green, .indigo, .red { background: transparent; color: #ffffff; }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .reminder-stats {
+    gap: 16px;
+    margin: 20px 0;
+  }
+
+  .stats-card {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .stats-content h2 {
+    font-size: 28px;
+    margin-bottom: 6px;
+  }
+
+  .stats-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .reminder-stats {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 16px 0;
+  }
+
+  .stats-card:hover {
+    transform: none;
+  }
+}
+

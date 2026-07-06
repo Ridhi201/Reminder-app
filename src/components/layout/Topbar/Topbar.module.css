@@ -4,12 +4,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 28px;
+  padding: 0 24px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 100;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    padding: 0 14px;
+    height: 56px;
+  }
 }
 
 .right {
@@ -18,7 +25,13 @@
   gap: 8px;
 }
 
-/* All icon buttons — same single light periwinkle color */
+@media (max-width: 480px) {
+  .right {
+    gap: 6px;
+  }
+}
+
+/* All icon buttons */
 .menuButton,
 .iconButton,
 .notifButton,
@@ -35,6 +48,18 @@
   align-items: center;
   transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
   box-shadow: 0 4px 12px rgba(108,142,245,0.30);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .menuButton,
+  .iconButton,
+  .notifButton,
+  .settingsButton {
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+  }
 }
 
 .menuButton:hover,
@@ -53,7 +78,7 @@
   gap: 10px;
   cursor: pointer;
   padding: 5px 14px 5px 5px;
-  margin-left: 8px;
+  margin-left: 6px;
   border-left: 1px solid rgba(0, 0, 0, 0.07);
   border-radius: 50px;
   background: rgba(108,142,245,0.08);
@@ -72,6 +97,32 @@
   object-fit: cover;
   border: 2px solid #6c8ef5;
   box-shadow: 0 0 0 3px rgba(108,142,245,0.18);
+  flex-shrink: 0;
+}
+
+.profileText {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hide profile text on small screens */
+@media (max-width: 600px) {
+  .profileText {
+    display: none;
+  }
+
+  .profile {
+    padding: 4px;
+    border-left: none;
+    border-radius: 50%;
+    background: transparent;
+    margin-left: 4px;
+  }
+
+  .profile:hover {
+    background: rgba(108,142,245,0.12);
+    transform: none;
+  }
 }
 
 .profile h4 {
@@ -86,4 +137,11 @@
   font-size: 11px;
   font-weight: 500;
   color: #6c8ef5;
+}
+
+/* Hide settings on very small screens */
+@media (max-width: 380px) {
+  .settingsButton {
+    display: none;
+  }
 }

@@ -810,15 +810,28 @@
 
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 900px) {
+  .settings-screen {
+    padding: 20px 16px;
+  }
+
+  .settings-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
   .settings-body {
     grid-template-columns: 1fr;
   }
+
   .settings-nav {
     position: static;
     flex-direction: row;
     flex-wrap: wrap;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
+
   .settings-nav-item {
     flex-direction: column;
     gap: 4px;
@@ -827,10 +840,56 @@
     text-align: center;
     flex: 1;
   }
+
   .settings-nav-desc { display: none; }
   .settings-nav-chevron { display: none; }
   .settings-panel { padding: 20px; }
   .settings-row { grid-template-columns: 1fr; }
+  .settings-row-3 { grid-template-columns: 1fr 1fr; }
   .backup-grid { grid-template-columns: 1fr; }
   .theme-cards { grid-template-columns: 1fr 1fr 1fr; }
+  .settings-stats-row { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px) {
+  .settings-screen {
+    padding: 14px 12px;
+  }
+
+  .settings-panel {
+    padding: 16px;
+  }
+
+  .settings-section-head {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+
+  .settings-actions {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .settings-save-btn,
+  .settings-reset-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .theme-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .settings-stats-row {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-row-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-title {
+    font-size: 20px;
+  }
 }

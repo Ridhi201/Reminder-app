@@ -9,6 +9,21 @@
   gap: 20px;
 }
 
+@media (max-width: 768px) {
+  .data-table-container {
+    padding: 16px 12px;
+    border-radius: 12px;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .data-table-container {
+    padding: 12px 8px;
+    border-radius: 10px;
+  }
+}
+
 /* Toolbar Styling */
 .table-toolbar {
   display: flex;
@@ -19,10 +34,26 @@
   padding-bottom: 8px;
 }
 
+@media (max-width: 640px) {
+  .table-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
 .toolbar-left, .toolbar-right {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .toolbar-right {
+    width: 100%;
+    justify-content: flex-end;
+  }
 }
 
 .bulk-actions-bar {
@@ -184,6 +215,24 @@
   font-size: 14px;
 }
 
+@media (max-width: 640px) {
+  .custom-table th,
+  .custom-table td {
+    padding: 10px 8px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .export-btn span {
+    display: none;
+  }
+
+  .export-btn {
+    padding: 8px 10px;
+  }
+}
+
 .custom-table tbody tr {
   transition: background-color 0.2s ease;
 }
@@ -216,6 +265,14 @@
   flex-wrap: wrap;
   gap: 16px;
   padding-top: 8px;
+}
+
+@media (max-width: 480px) {
+  .table-pagination {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 }
 
 .pagination-info {

@@ -10,6 +10,22 @@
   padding: 20px;
 }
 
+@media (max-width: 640px) {
+  .card {
+    border-radius: 12px;
+  }
+
+  .card--padded {
+    padding: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card--padded {
+    padding: 12px;
+  }
+}
+
 /* Blue stat card variant */
 .card-blue {
   background: #6c8ef5 !important;
@@ -37,4 +53,14 @@
 .card-blue:hover {
   transform: translateY(-5px);
   box-shadow: 0 16px 40px rgba(108,142,245,0.42) !important;
+}
+
+@media (max-width: 640px) {
+  .card-blue {
+    border-radius: 16px !important;
+  }
+
+  .card-blue:hover {
+    transform: none;
+  }
 }

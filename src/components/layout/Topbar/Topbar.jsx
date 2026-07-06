@@ -3,19 +3,23 @@ import { MdMenu, MdSettings, MdNotifications } from "react-icons/md";
 import { useAuthContext } from "../../../context/AuthContext";
 import styles from "./Topbar.module.css";
 
-export default function Topbar() {
+export default function Topbar({ onMenuClick }) {
   const { user } = useAuthContext();
   const navigate = useNavigate();
 
   return (
     <header className={styles.topbar}>
-      {/* Menu toggle */}
-      <button className={styles.menuButton} aria-label="Toggle sidebar">
+      {/* Menu toggle (hamburger) */}
+      <button
+        className={styles.menuButton}
+        aria-label="Toggle sidebar"
+        onClick={onMenuClick}
+      >
         <MdMenu size={24} />
       </button>
 
       <div className={styles.right}>
-        {/* Notifications bell — amber on hover */}
+        {/* Notifications bell */}
         <button
           className={styles.notifButton}
           aria-label="Notifications"
@@ -25,7 +29,7 @@ export default function Topbar() {
           <MdNotifications size={22} />
         </button>
 
-        {/* Settings — emerald on hover */}
+        {/* Settings */}
         <button
           className={styles.settingsButton}
           aria-label="Settings"
@@ -49,7 +53,7 @@ export default function Topbar() {
             src={user?.avatar ?? "https://i.pravatar.cc/150?img=5"}
             alt={user?.name ?? "Profile"}
           />
-          <div>
+          <div className={styles.profileText}>
             <h4>{user?.name ?? "Admin"}</h4>
             <p>{user?.email ?? "admin@acme.com"}</p>
           </div>

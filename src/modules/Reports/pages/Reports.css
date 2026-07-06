@@ -162,3 +162,40 @@
   margin: 0 0 20px;
   font-family: var(--font-display);
 }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .report-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .reports-screen {
+    padding: 18px 16px;
+  }
+
+  .report-filter-bar {
+    flex-wrap: wrap;
+  }
+
+  .report-chart-card {
+    padding: 18px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .reports-screen {
+    padding: 14px 12px;
+  }
+
+  .report-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reports-tab {
+    padding: 7px 12px;
+    font-size: 12.5px;
+  }
+}
+

@@ -175,3 +175,53 @@
   font-size: 13px;
   margin-bottom: 16px;
 }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .profile-screen {
+    padding: 18px 16px;
+  }
+
+  .profile-avatar-card {
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .profile-avatar-hint {
+    margin-left: 0;
+    align-self: auto;
+  }
+
+  .profile-card {
+    padding: 20px;
+  }
+
+  .profile-row {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-screen {
+    padding: 14px 12px;
+  }
+
+  .profile-avatar-card {
+    padding: 16px;
+  }
+
+  .profile-card {
+    padding: 16px;
+  }
+
+  .profile-name {
+    font-size: 18px;
+  }
+}
+
