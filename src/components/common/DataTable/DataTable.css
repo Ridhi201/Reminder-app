@@ -165,7 +165,7 @@
 
 .custom-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse:collapse;
   text-align: left;
 }
 
@@ -192,7 +192,7 @@
 }
 
 .header-content {
-  display: flex;
+  display: flex; 
   align-items: center;
   gap: 6px;
 }

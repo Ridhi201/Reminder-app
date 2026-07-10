@@ -16,6 +16,7 @@ export default function Stats() {
           percentage={stat.percentage}
           color={stat.color}
           icon={<stat.icon />}
+          path={stat.path}
         />
 
       ))}

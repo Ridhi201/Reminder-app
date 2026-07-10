@@ -2,13 +2,8 @@ import PageHeader from "../../../components/common/PageHeader";
 
 import Greeting from "../components/Greeting";
 import Stats from "../components/Stats";
-import CategoryChart from "../components/CategoryChart";
 import DashboardGrid from "../components/Layout/DashboardGrid";
-import QuickActions from "../components/QuickActions";
-import TodaysReminders from "../components/TodaysReminders";
 import RecentActivity from "../components/RecentActivity";
-import UpcomingReminders from "../components/UpcomingReminders";
-import CalendarWidget from "../components/CalendarWidget";
 import DashboardOverview from "../components/DashboardOverview";
 
 export default function Dashboard() {
@@ -19,7 +14,7 @@ export default function Dashboard() {
 
       <PageHeader
         title="Dashboard"
-        subtitle="Manage reminders and monitor application activity."
+        subtitle="Monitor application activity and access management controls."
         buttonText="Export"
         buttonVariant="primary"
       />
@@ -32,24 +27,17 @@ export default function Dashboard() {
 
         left={
           <>
-            <QuickActions />
-            <TodaysReminders />
-            <UpcomingReminders />
+            <RecentActivity />
           </>
         }
 
         right={
           <>
-            <RecentActivity />
-            <CalendarWidget />
             <DashboardOverview />
           </>
         }
 
       />
-
-      {/* Reminder Categories — moved below main grid */}
-      <CategoryChart />
 
     </>
 

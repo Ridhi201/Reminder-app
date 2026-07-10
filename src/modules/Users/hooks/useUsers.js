@@ -20,7 +20,7 @@ function saveUsers(list) {
 export default function useUsers() {
   const [usersList, setUsersList] = useState(loadUsers);
   const [search, setSearch]       = useState("");
-  const [role, setRole]           = useState("All");
+  const [role, setRole]           = useState("Admin");
   const [status, setStatus]       = useState("All");
 
   const persist = (next) => {

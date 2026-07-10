@@ -7,20 +7,15 @@ import ProtectedRoute from "../components/common/ProtectedRoute/ProtectedRoute";
 import Login  from "../authentication/pages/Login";
 import Logout from "../authentication/pages/Logout";
 
-// Modules
-import Dashboard  from "../modules/Dashboard/pages/Dashboard";
-import Users      from "../modules/Users/pages/Users";
-import AddUser    from "../modules/Users/pages/AddUser";
-import EditUser   from "../modules/Users/pages/EditUser";
-import ViewUser   from "../modules/Users/pages/ViewUser";
-import { ReminderList, AddReminder, EditReminder, ViewReminder } from "../modules/Reminders";
-import { CalendarPage } from "../modules/Calendar";
-import { TemplateList, AddTemplate, EditTemplate, ViewTemplate } from "../modules/Templates";
-import { NotificationList, SendNotification, ViewNotification, EditNotification, NotificationHistory, NotificationAnalytics } from "../modules/Notifications";
-import Settings     from "../modules/Settings/pages/Settings";
-import Profile      from "../modules/Profile/pages/Profile";
-import Reports      from "../modules/Reports/pages/Reports";
-import ActivityLogs from "../modules/Logs/pages/ActivityLogs";
+// Modules Routes
+import DashboardRoutes     from "../modules/Dashboard/routes";
+import UsersRoutes         from "../modules/Users/routes";
+import TemplatesRoutes     from "../modules/Templates/routes";
+import NotificationsRoutes from "../modules/Notifications/routes";
+import SettingsRoutes      from "../modules/Settings/routes";
+import ProfileRoutes       from "../modules/Profile/routes";
+import ReportsRoutes       from "../modules/Reports/routes";
+import LogsRoutes          from "../modules/Logs/routes";
 
 export default function AppRoutes() {
   return (
@@ -37,53 +32,31 @@ export default function AppRoutes() {
           {/* Redirect root to dashboard */}
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
 
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/*" element={<DashboardRoutes />} />
 
           {/* Logout — confirmation modal overlays the layout */}
           <Route path="/logout" element={<Logout />} />
 
           {/* Users */}
-          <Route path="/users"          element={<Users />} />
-          <Route path="/users/add"      element={<AddUser />} />
-          <Route path="/users/edit/:id" element={<EditUser />} />
-          <Route path="/users/view/:id" element={<ViewUser />} />
-
-          {/* Reminders */}
-          <Route path="/reminders"          element={<ReminderList />} />
-          <Route path="/reminders/add"      element={<AddReminder />} />
-          <Route path="/reminders/edit/:id" element={<EditReminder />} />
-          <Route path="/reminders/view/:id" element={<ViewReminder />} />
-
-          {/* Calendar */}
-          <Route path="/calendar" element={<CalendarPage />} />
+          <Route path="/users/*" element={<UsersRoutes />} />
 
           {/* Templates */}
-          <Route path="/templates"          element={<TemplateList />} />
-          <Route path="/templates/add"      element={<AddTemplate />} />
-          <Route path="/templates/edit/:id" element={<EditTemplate />} />
-          <Route path="/templates/view/:id" element={<ViewTemplate />} />
+          <Route path="/templates/*" element={<TemplatesRoutes />} />
 
           {/* Notifications */}
-          <Route path="/notifications"           element={<NotificationList />} />
-          <Route path="/notifications/send"      element={<SendNotification />} />
-          <Route path="/notifications/view/:id"  element={<ViewNotification />} />
-          <Route path="/notifications/edit/:id"  element={<EditNotification />} />
-          <Route path="/notifications/history"   element={<NotificationHistory />} />
-          <Route path="/notifications/analytics" element={<NotificationAnalytics />} />
+          <Route path="/notifications/*" element={<NotificationsRoutes />} />
 
           {/* Settings */}
-          <Route path="/settings"      element={<Settings />} />
-          <Route path="/settings/:tab" element={<Settings />} />
+          <Route path="/settings/*" element={<SettingsRoutes />} />
 
           {/* Profile */}
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/*" element={<ProfileRoutes />} />
 
           {/* Reports */}
-          <Route path="/reports"      element={<Reports />} />
-          <Route path="/reports/:tab" element={<Reports />} />
+          <Route path="/reports/*" element={<ReportsRoutes />} />
 
           {/* Activity Logs */}
-          <Route path="/logs" element={<ActivityLogs />} />
+          <Route path="/logs/*" element={<LogsRoutes />} />
 
           {/* Fallback */}
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
@@ -93,3 +66,4 @@ export default function AppRoutes() {
     </Routes>
   );
 }
+

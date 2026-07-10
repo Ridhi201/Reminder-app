@@ -1,7 +1,6 @@
 import {
   MdPersonAdd,
   MdDescription,
-  MdCalendarMonth,
   MdSettings,
 } from "react-icons/md";
 
@@ -17,12 +16,6 @@ const quickActions = [
     icon: MdDescription,
     bg:     "#7c3aed",                   // Royal Violet
     shadow: "rgba(124,58,237,0.35)",
-  },
-  {
-    title: "Calendar",
-    icon: MdCalendarMonth,
-    bg:     "#b45309",                   // Champagne Gold
-    shadow: "rgba(180,83,9,0.35)",
   },
   {
     title: "Settings",

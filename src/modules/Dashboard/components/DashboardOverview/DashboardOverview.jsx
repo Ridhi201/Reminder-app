@@ -18,22 +18,6 @@ const overview = [
     {
         label: "Notifications Today",
         value: "158"
-    },
-    {
-        label: "Today's Reminders",
-        value: "46"
-    },
-    {
-        label: "Completed Today",
-        value: "38"
-    },
-    {
-        label: "Pending",
-        value: "6"
-    },
-    {
-        label: "Overdue",
-        value: "2"
     }
 ];
 

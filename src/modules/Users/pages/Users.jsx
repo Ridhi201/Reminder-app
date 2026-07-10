@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import PageHeader from "../../../components/common/PageHeader";
 
 import UserStats from "../components/UserStats";
@@ -6,6 +7,7 @@ import UserTable from "../components/UserTable";
 import useUsers from "../hooks/useUsers";
 
 export default function Users() {
+  const navigate = useNavigate();
   const {
     search,
     setSearch,
@@ -23,6 +25,8 @@ export default function Users() {
       <PageHeader
         title="Users"
         subtitle="Manage all registered users"
+        buttonText="Add User"
+        onButtonClick={() => navigate("/users/add")}
       />
 
       <UserStats />
@@ -32,8 +36,6 @@ export default function Users() {
         setSearch={setSearch}
         role={role}
         setRole={setRole}
-        status={status}
-        setStatus={setStatus}
       />
 
       <UserTable

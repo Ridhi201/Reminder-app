@@ -32,16 +32,6 @@ const SidebarMenu = [
     path: "/users",
   },
   {
-    title: "Reminders",
-    icon: MdAlarm,
-    path: "/reminders",
-  },
-  {
-    title: "Calendar",
-    icon: MdCalendarMonth,
-    path: "/calendar",
-  },
-  {
     title: "Templates",
     icon: MdDescription,
     path: "/templates",
