@@ -1,9 +1,9 @@
 .data-table-container {
-  background: #ffffff;
+  background: var(--surface);
   border-radius: 16px;
   padding: 24px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-  border: 1px solid #e2e8f0;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -143,9 +143,9 @@
 .rows-select {
   padding: 6px 10px;
   border-radius: 8px;
-  border: 1px solid #e2e8f0;
-  background: #ffffff;
-  color: #1e293b;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--ink);
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
@@ -160,7 +160,7 @@
 .table-wrapper {
   overflow-x: auto;
   border-radius: 12px;
-  border: 1px solid #f1f5f9;
+  border: 1px solid var(--border);
 }
 
 .custom-table {
@@ -171,13 +171,13 @@
 
 .custom-table th {
   padding: 16px;
-  background: #f8fafc;
-  color: #475569;
+  background: var(--surface-muted);
+  color: var(--ink-muted);
   font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--border);
   user-select: none;
 }
 
@@ -187,8 +187,8 @@
 }
 
 .custom-table th.sortable:hover {
-  background: #f1f5f9;
-  color: #0f172a;
+  background: var(--border);
+  color: var(--ink);
 }
 
 .header-content {
@@ -210,8 +210,8 @@
 
 .custom-table td {
   padding: 16px;
-  border-bottom: 1px solid #f1f5f9;
-  color: #334155;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink);
   font-size: 14px;
 }
 
@@ -238,11 +238,11 @@
 }
 
 .custom-table tbody tr:hover {
-  background: #fafafa;
+  background: var(--surface-muted);
 }
 
 .custom-table tbody tr.selected {
-  background: #f0f7ff;
+  background: rgba(46, 90, 172, 0.08);
 }
 
 .checkbox-cell {
@@ -292,9 +292,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #e2e8f0;
-  background: #ffffff;
-  color: #475569;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--ink-muted);
   border-radius: 8px;
   font-size: 13px;
   font-weight: 500;
@@ -303,9 +303,9 @@
 }
 
 .page-btn:hover:not(:disabled) {
-  background: #f8fafc;
-  color: #0f172a;
-  border-color: #cbd5e1;
+  background: var(--surface-muted);
+  color: var(--ink);
+  border-color: var(--border);
 }
 
 .page-btn.active {

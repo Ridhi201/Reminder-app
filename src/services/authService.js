@@ -1,13 +1,6 @@
-import api from "./api";
+import api from "../api/axios";
 
-/** POST /auth/login */
-export const login = (credentials) => api.post("/auth/login", credentials);
-
-/** POST /auth/logout */
-export const logout = () => api.post("/auth/logout");
-
-/** GET /auth/me */
-export const getMe = () => api.get("/auth/me");
-
-/** POST /auth/refresh */
-export const refreshToken = () => api.post("/auth/refresh");
+export const loginUser = async (data) => {
+  const response = await api.post("/myadmin/auth/login", data);
+  return response.data;
+};

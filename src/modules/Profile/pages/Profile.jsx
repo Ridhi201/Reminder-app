@@ -1,6 +1,7 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useAuthContext } from "../../../context/AuthContext";
 import { storageService } from "../../../services/storage.service";
+import { getMyProfile, getProfileById, updateProfile } from "../../../services/profileService";
 import "./Profile.css";
 
 export default function Profile() {
@@ -26,6 +27,41 @@ export default function Profile() {
   const setField = (key, val) => setForm((f) => ({ ...f, [key]: val }));
   const setPwField = (key, val) => setPwForm((f) => ({ ...f, [key]: val }));
 
+  // Fetch profile on mount / user ID change
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const userId = user?.id || user?._id;
+        let profileData;
+        if (userId && userId !== 1) { // 1 is mock ID
+          profileData = await getProfileById(userId);
+        } else {
+          profileData = await getMyProfile();
+        }
+
+        if (profileData) {
+          setForm({
+            name: profileData.name || "",
+            email: profileData.email || "",
+            phone: profileData.phone || "",
+            role: profileData.role || "",
+          });
+          if (profileData.avatar) {
+            setAvatar(profileData.avatar);
+          }
+          login(
+            { ...user, ...profileData },
+            !!storageService.get("auth_user", null)
+          );
+        }
+      } catch (err) {
+        console.error("Failed to fetch profile:", err);
+      }
+    };
+
+    fetchProfile();
+  }, [user?.id, user?._id]); // eslint-disable-line react-hooks/exhaustive-deps
+
   const handleAvatarChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -34,11 +70,24 @@ export default function Profile() {
     reader.readAsDataURL(file);
   };
 
-  const handleProfileSave = () => {
-    const updated = { ...user, ...form, avatar };
-    login(updated, !!storageService.get("auth_user", null));
-    setProfileSaved(true);
-    setTimeout(() => setProfileSaved(false), 2500);
+  const handleProfileSave = async () => {
+    try {
+      const userId = user?.id || user?._id;
+      const cleanUserId = (userId && userId !== 1) ? userId : null;
+      const updatedData = { ...form, avatar };
+      const response = await updateProfile(cleanUserId, updatedData);
+
+      const updatedUser = { 
+        ...user, 
+        ...(response?.user || response || updatedData) 
+      };
+      
+      login(updatedUser, !!storageService.get("auth_user", null));
+      setProfileSaved(true);
+      setTimeout(() => setProfileSaved(false), 2500);
+    } catch (err) {
+      console.error("Failed to save profile:", err);
+    }
   };
 
   const handlePasswordSave = () => {

@@ -5,13 +5,14 @@ import { APP_CONFIG } from "../config/app.config.js";
 const ThemeContext = createContext(null);
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(
-    () => storageService.get("theme", APP_CONFIG.defaultTheme)
-  );
+  const [theme, setTheme] = useState(() => {
+    storageService.set("theme", "light");
+    return "light";
+  });
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    storageService.set("theme", theme);
+    document.documentElement.setAttribute("data-theme", "light");
+    storageService.set("theme", "light");
   }, [theme]);
 
   const toggleTheme = () => setTheme((t) => (t === "light" ? "dark" : "light"));

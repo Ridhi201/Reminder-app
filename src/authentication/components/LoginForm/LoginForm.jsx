@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../../context/AuthContext";
+import { loginUser } from "../../../services/authService";
 
 import Typography from "../../../components/common/Typography";
 import Input from "../../../components/common/Input";
@@ -9,19 +10,6 @@ import Checkbox from "../../../components/common/Checkbox";
 import Button from "../../../components/common/Button";
 
 import "./LoginForm.css";
-
-// Mock credentials — swap for real API call when backend is ready
-const MOCK_USERS = [
-  {
-    id: 1,
-    name: "Admin",
-    email: "admin@reminder.com",
-    phone: "9999999999",
-    role: "Super Admin",
-    avatar: "https://i.pravatar.cc/150?img=5",
-    password: "admin123",
-  },
-];
 
 export default function LoginForm() {
   const { login } = useAuthContext();
@@ -38,24 +26,56 @@ export default function LoginForm() {
     setError("");
     setLoading(true);
 
-    // Simulate network delay
-    await new Promise((r) => setTimeout(r, 600));
+    try {
+      const data = await loginUser({
+        email: identifier,
+        username: identifier,
+        identifier: identifier,
+        password: password
+      });
 
-    const found = MOCK_USERS.find(
-      (u) =>
-        (u.email === identifier || u.phone === identifier) &&
-        u.password === password
-    );
+      // Extract user info and token from response
+      const user = data.user || {
+        id: data.id || 1,
+        name: data.name || "Admin",
+        email: data.email || identifier,
+        role: data.role || "Super Admin",
+        avatar: data.avatar || "https://i.pravatar.cc/150?img=5"
+      };
+      
+      const token = data.token || data.accessToken || data.jwt;
 
-    if (found) {
-      const { password: _pw, ...safeUser } = found;
-      login(safeUser, remember);
+      if (token) {
+        localStorage.setItem("token", token);
+      }
+
+      login(user, remember);
       navigate("/dashboard", { replace: true });
-    } else {
-      setError("Invalid email/phone or password. Try admin@reminder.com / admin123");
-    }
+    } catch (err) {
+      // If it is a network error (e.g. backend server is not running or CORS blocked)
+      const isNetworkError = err.message === "Network Error" || !err.response;
+      
+      if (isNetworkError && identifier === "admin@reminder.com" && password === "admin123") {
+        const mockUser = {
+          id: 1,
+          name: "Admin (Offline Mode)",
+          email: "admin@reminder.com",
+          role: "Super Admin",
+          avatar: "https://i.pravatar.cc/150?img=5"
+        };
+        login(mockUser, remember);
+        navigate("/dashboard", { replace: true });
+        return;
+      }
 
-    setLoading(false);
+      setError(
+        isNetworkError 
+          ? "Network Error: Could not connect to API server at http://localhost:5000. Please start your backend server, or log in with admin@reminder.com / admin123 to use offline mode."
+          : (err.response?.data?.message || err.message || "Invalid credentials.")
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

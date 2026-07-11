@@ -1,9 +1,9 @@
 /* Default card — white */
 .card {
-  background: #ffffff;
-  border: 1px solid #e3e6eb;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(16,24,40,0.06);
+  box-shadow: var(--shadow-sm);
 }
 
 .card--padded {

@@ -9,7 +9,6 @@ import CompanySettings      from "../sections/CompanySettings";
 import NotificationSettings from "../sections/NotificationSettings";
 import SecuritySettings     from "../sections/SecuritySettings";
 import BackupSettings       from "../sections/BackupSettings";
-import ApiSettings          from "../sections/ApiSettings";
 import "./Settings.css";
 
 const TABS = [
@@ -18,7 +17,6 @@ const TABS = [
   { id: "notifications", label: "Notifications",   icon: MdNotifications, desc: "Alerts & reminders",      component: NotificationSettings },
   { id: "security",      label: "Security",        icon: MdSecurity,      desc: "Auth & access policies",  component: SecuritySettings },
   { id: "backup",        label: "Backup & Data",   icon: MdBackup,        desc: "Export & restore",        component: BackupSettings },
-  { id: "api",           label: "API Integration", icon: MdCode,          desc: "Keys & webhooks",         component: ApiSettings },
 ];
 
 export default function Settings() {
