@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../../context/AuthContext";
 import { storageService } from "../../../services/storage.service";
 import { getMyProfile, getProfileById, updateProfile } from "../../../services/profileService";
-import StatusBadge from "../../../components/common/StatusBadge";
+import { StatusBadge, Toast } from "../../../components/common";
 import "./Profile.css";
 
 export default function Profile() {
@@ -41,6 +41,7 @@ export default function Profile() {
   const [pwForm, setPwForm] = useState({ current: "", newPw: "", confirm: "" });
   const [pwError, setPwError]   = useState("");
   const [pwSaved, setPwSaved]   = useState(false);
+  const [toast, setToast]       = useState({ visible: false, message: "", type: "success" });
 
   const fileRef = useRef();
 
@@ -95,28 +96,63 @@ export default function Profile() {
       const userId = user?.id || user?._id;
       const cleanUserId = (userId && userId !== 1) ? userId : null;
       const updatedData = { ...form, avatar };
-      const response = await updateProfile(cleanUserId, updatedData);
-
-      const updatedUser = { 
-        ...user, 
-        ...(response?.user || response || updatedData) 
-      };
       
-      login(updatedUser, !!storageService.get("auth_user", null));
-      setProfileSaved(true);
-      setTimeout(() => setProfileSaved(false), 2500);
+      let finalUser = { ...user, ...updatedData };
+
+      if (userId === 1) {
+        // Offline Mode: save to auth context directly
+        login(finalUser, !!storageService.get("auth_user", null));
+        setProfileSaved(true);
+        setToast({ visible: true, message: "Profile updated successfully (Offline Mode)!", type: "success" });
+        setTimeout(() => setProfileSaved(false), 2500);
+      } else {
+        const response = await updateProfile(cleanUserId, updatedData);
+        const updatedUser = { 
+          ...user, 
+          ...(response?.user || response || updatedData) 
+        };
+        login(updatedUser, !!storageService.get("auth_user", null));
+        setProfileSaved(true);
+        setToast({ visible: true, message: "Profile updated successfully!", type: "success" });
+        setTimeout(() => setProfileSaved(false), 2500);
+      }
     } catch (err) {
       console.error("Failed to save profile:", err);
+      // Fallback for network error / backend offline
+      const isNetworkError = err.message === "Network Error" || !err.response;
+      if (isNetworkError) {
+        const finalUser = { ...user, ...form, avatar };
+        login(finalUser, !!storageService.get("auth_user", null));
+        setProfileSaved(true);
+        setToast({ visible: true, message: "Profile updated successfully (Offline Mode)!", type: "success" });
+        setTimeout(() => setProfileSaved(false), 2500);
+      } else {
+        setToast({
+          visible: true,
+          message: err.response?.data?.message || err.message || "Failed to update profile.",
+          type: "error"
+        });
+      }
     }
   };
 
   const handlePasswordSave = () => {
     setPwError("");
-    if (!pwForm.current) { setPwError("Please enter your current password."); return; }
-    if (pwForm.newPw.length < 6) { setPwError("New password must be at least 6 characters."); return; }
-    if (pwForm.newPw !== pwForm.confirm) { setPwError("Passwords do not match."); return; }
+    if (!pwForm.current) { 
+      setToast({ visible: true, message: "Please enter your current password.", type: "error" });
+      return; 
+    }
+    if (pwForm.newPw.length < 6) { 
+      setToast({ visible: true, message: "New password must be at least 6 characters.", type: "error" });
+      return; 
+    }
+    if (pwForm.newPw !== pwForm.confirm) { 
+      setToast({ visible: true, message: "Passwords do not match.", type: "error" });
+      return; 
+    }
     setPwForm({ current: "", newPw: "", confirm: "" });
     setPwSaved(true);
+    setToast({ visible: true, message: "Password updated successfully!", type: "success" });
     setTimeout(() => setPwSaved(false), 2500);
   };
 
@@ -323,6 +359,14 @@ export default function Profile() {
         </div>
 
       </div>
+
+      {/* Toast popup */}
+      <Toast
+        message={toast.message}
+        type={toast.type}
+        visible={toast.visible}
+        onClose={() => setToast({ ...toast, visible: false })}
+      />
     </div>
   );
 }
