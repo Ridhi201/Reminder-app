@@ -2,13 +2,15 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
   MdTune, MdBusiness, MdNotifications,
-  MdSecurity, MdBackup, MdChevronRight, MdCode
+  MdSecurity, MdBackup, MdChevronRight, MdCode,
+  MdCreditCard
 } from "react-icons/md";
 import GeneralSettings      from "../sections/GeneralSettings";
 import CompanySettings      from "../sections/CompanySettings";
 import NotificationSettings from "../sections/NotificationSettings";
 import SecuritySettings     from "../sections/SecuritySettings";
 import BackupSettings       from "../sections/BackupSettings";
+import BillingSettings      from "../sections/BillingSettings";
 import "./Settings.css";
 
 const TABS = [
@@ -17,6 +19,7 @@ const TABS = [
   { id: "notifications", label: "Notifications",   icon: MdNotifications, desc: "Alerts & reminders",      component: NotificationSettings },
   { id: "security",      label: "Security",        icon: MdSecurity,      desc: "Auth & access policies",  component: SecuritySettings },
   { id: "backup",        label: "Backup & Data",   icon: MdBackup,        desc: "Export & restore",        component: BackupSettings },
+  { id: "billing",       label: "Billing & Subscription", icon: MdCreditCard, desc: "Manage plans & invoices", component: BillingSettings },
 ];
 
 export default function Settings() {

@@ -1,11 +1,31 @@
 import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../../context/AuthContext";
 import { storageService } from "../../../services/storage.service";
 import { getMyProfile, getProfileById, updateProfile } from "../../../services/profileService";
+import StatusBadge from "../../../components/common/StatusBadge";
 import "./Profile.css";
 
 export default function Profile() {
   const { user, login } = useAuthContext();
+  const navigate = useNavigate();
+
+  // Subscription state
+  const [subPlan, setSubPlan] = useState(() => {
+    return localStorage.getItem("active_subscription_plan") || "pro";
+  });
+  const [subInterval, setSubInterval] = useState(() => {
+    return localStorage.getItem("active_subscription_interval") || "monthly";
+  });
+
+  useEffect(() => {
+    const handleSubUpdate = () => {
+      setSubPlan(localStorage.getItem("active_subscription_plan") || "pro");
+      setSubInterval(localStorage.getItem("active_subscription_interval") || "monthly");
+    };
+    window.addEventListener("subscription_updated", handleSubUpdate);
+    return () => window.removeEventListener("subscription_updated", handleSubUpdate);
+  }, []);
 
   // Profile form
   const [form, setForm]   = useState({
@@ -154,6 +174,46 @@ export default function Profile() {
             <span className="profile-role-badge">{form.role || "—"}</span>
           </div>
           <p className="profile-avatar-hint">Click the camera icon to change your photo</p>
+        </div>
+
+        {/* ── Subscription Card ────────────────────────── */}
+        <div className="profile-card">
+          <h3 className="profile-card-title">Subscription Details</h3>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "16px" }}>
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "8px" }}>
+                <strong style={{ fontSize: "18px", color: "var(--ink)", fontFamily: "var(--font-display)" }}>
+                  {subPlan === "free" ? "Basic Plan (Free)" : subPlan === "enterprise" ? "Enterprise Plan" : "Pro Plan"}
+                </strong>
+                <StatusBadge status={subPlan === "free" ? "Free" : "Premium"} />
+              </div>
+              <p style={{ margin: 0, fontSize: "13.5px", color: "var(--ink-muted)", lineHeight: 1.4 }}>
+                {subPlan === "free" 
+                  ? "Upgrade to Pro or Enterprise to unlock unlimited reminders and advanced integrations." 
+                  : `Your plan is active and will renew on 14 Aug 2026. Billed ${subInterval}.`
+                }
+              </p>
+            </div>
+            <button
+              onClick={() => navigate("/settings/billing")}
+              style={{
+                padding: "10px 18px",
+                background: "transparent",
+                border: "1.5px solid var(--border)",
+                color: "var(--ink)",
+                borderRadius: 8,
+                fontWeight: 600,
+                cursor: "pointer",
+                fontSize: 13.5,
+                transition: "all 0.15s ease",
+              }}
+              onMouseOver={(e) => { e.currentTarget.style.borderColor = "var(--ink)"; e.currentTarget.style.background = "var(--surface-muted)"; }}
+              onMouseOut={(e) => { e.currentTarget.style.borderColor = "var(--border)"; e.currentTarget.style.background = "transparent"; }}
+              id="profile-manage-billing-btn"
+            >
+              Manage Subscription
+            </button>
+          </div>
         </div>
 
         {/* ── Profile form ─────────────────────────────── */}

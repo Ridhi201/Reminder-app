@@ -12,7 +12,9 @@
 
 .kpi-card {
   padding: 4px;
+  color:blue;
 }
+
 
 .kpi-title {
   font-size: 13px;
@@ -50,17 +52,17 @@
 
 .kpi-trend.up {
   color: #16a34a;
-  background-color: #f0fdf4;
+  background-color: #ecf4f7;
 }
 
 .kpi-trend.down {
   color: #ef4444;
-  background-color: #fef2f2;
+  background-color: #f1e9e9;
 }
 
 .kpi-subtext {
   font-size: 12px;
-  color: #94a3b8;
+  color: #8fb8ed;
   margin: 0;
 }
 
@@ -188,7 +190,7 @@
   margin-bottom: 6px;
   border-bottom: 1px solid #334155;
   padding-bottom: 4px;
-  color: #cbd5e1;
+  color: #11519e;
 }
 
 .tooltip-row {
@@ -240,6 +242,7 @@
 
 .donut-segment {
   transition: stroke-dashoffset 0.4s ease-out;
+
 }
 
 .donut-center-num {
@@ -284,7 +287,7 @@
 }
 
 .donut-name {
-  color: #64748b;
+  color: #3062a8;
 }
 
 .donut-value {
