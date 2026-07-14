@@ -18,7 +18,7 @@ npm run preview   # preview the production build
 
 - **23 modules, 172 screens** — Authentication, Dashboard, Reminder, Calendar,
   Templates, AI Assistant, Voice Assistant, Location Reminder, Habit Tracker,
-  Goal Tracker, Pomodoro, Notes, Groups, Notifications, Badges, XP & Levels,
+  Goal Tracker, Pomodoro, Notes, Notifications, Badges, XP & Levels,
   Streak, Analytics, Premium, Profile, Settings, Help Center, Legal.
 - Every screen is **lazy-loaded** and **code-split** automatically (each
   builds to its own ~0.2 kB chunk — see `npm run build` output).
